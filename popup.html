@@ -4,12 +4,15 @@
     <link rel="stylesheet" href="popup.css">
   </head>
   <body>
-    <ul id="hideList"></ul>
-    
-    <label for="fname">Add company to hide:</label><br>
-    <input type="text" id="cname" name="cname">
-    <button id="addBtn">Add</button><br><br>
-    <button id="clearBtn">Clear list</button>
+    <div class='filter-container'>
+      <div class="filter-header">Filtered companies:</div>
+      <ul id="hideList"></ul>
+      
+      <label for="fname">Add company to hide:</label><br>
+      <input type="text" id="cname" name="cname">
+      <button class="button-4" id="addBtn">Add</button>
+      <button class="button-4" id="clearBtn">Clear list</button>
+    </div>
     <script src="popup.js"></script>
     
   </body>

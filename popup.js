@@ -59,6 +59,7 @@ addBtn.addEventListener( 'click', ()=> {
           const hideList = document.getElementById('hideList');
           let li = addElement(cname.value);
           hideList.appendChild(li);
+          cname.value = '';
         }
       })
   }
