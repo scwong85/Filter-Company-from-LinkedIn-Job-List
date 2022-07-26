@@ -11,7 +11,6 @@ const readLocalStorage = (key) => {
 };
 
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.local.clear();
   chrome.contextMenus.create({
 		id: 'hide',
 		title: "Hide!: %s",
