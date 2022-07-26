@@ -12,35 +12,22 @@ const readLocalStorage = (key) => {
 
 const removeListItem = () => {
   let targetList = document.getElementsByClassName('jobs-search-results__list-item')
-
-  //console.log(targetList.length);
-
-  for (var i=0; i<targetList.length; i++) {
-    let tmpCompany = targetList[i].getElementsByClassName('job-card-container__company-name');
-    
-    if (tmpCompany !== undefined && tmpCompany.length > 0) {
-      let companyName = tmpCompany[0].outerText;
-      //console.log(companyName);
-    }
-
-  }
-      
   readLocalStorage('hide')
     .then(hide_data => {
+      for (var i = 0; i < targetList.length; i++) {
+        targetList[i].style.display = "block";
+      }
+
       if (hide_data !== 'fail' && hide_data !== undefined && hide_data !== null) {
         for(var j = 0; j < hide_data.length; j++) {
           for (var i = 0; i < targetList.length; i++) {
             let tmpCompany = targetList[i].getElementsByClassName('job-card-container__company-name') 
             if (tmpCompany !== undefined && tmpCompany.length > 0) {
               let companyName = tmpCompany[0].outerText;
-
               if(companyName.toLowerCase().includes(hide_data[j].toLowerCase())) {
-                //console.log(companyName.toLowerCase().includes(hide_data[j].toLowerCase()), 'found', i)
                 targetList[i].style.display = "none";
-                //console.log(companyName);
-              }
-            }
-            
+              } 
+            }       
           }
         } 
       }
