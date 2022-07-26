@@ -1,6 +1,27 @@
 const clearBtn = document.getElementById('clearBtn');
 const addBtn = document.getElementById('addBtn');
 
+const inputElem = document.getElementById("cname");
+inputElem.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    if (inputElem !== undefined && inputElem.value !== undefined && inputElem.value !== '') {
+      readLocalStorage('hide')
+        .then(hide_data => {
+          if (hide_data.indexOf(inputElem.value) === -1 ) {
+            hide_data.push(cname.value);
+            chrome.storage.local.set({
+              'hide': hide_data
+            });
+            const hideList = document.getElementById('hideList');
+            let li = addElement(inputElem.value);
+            hideList.appendChild(li);
+            inputElem.value = '';
+          }
+        })
+    }
+  }
+});
+
 clearBtn.addEventListener( 'click', ()=> {
 	chrome.storage.local.clear();
   chrome.storage.local.set({ 'hide': [] });
