@@ -51,13 +51,15 @@ addBtn.addEventListener( 'click', ()=> {
   if (cname !== undefined && cname.value !== undefined && cname.value !== '') {
     readLocalStorage('hide')
       .then(hide_data => {
-        hide_data.push(cname.value);
-        chrome.storage.local.set({
-          'hide': hide_data
-        });
-        const hideList = document.getElementById('hideList');
-        let li = addElement(cname.value);
-        hideList.appendChild(li);
+        if (hide_data.indexOf(cname.value) === -1 ) {
+          hide_data.push(cname.value);
+          chrome.storage.local.set({
+            'hide': hide_data
+          });
+          const hideList = document.getElementById('hideList');
+          let li = addElement(cname.value);
+          hideList.appendChild(li);
+        }
       })
   }
 });
@@ -79,7 +81,6 @@ const readLocalStorage = (key) => {
 
 readLocalStorage('hide')
   .then(hide_data => {
-    console.log('hide_data', hide_data);
     if (hide_data !== 'fail' && hide_data !== undefined && hide_data !== null) {
       const hideList = document.getElementById('hideList');
       for (i in hide_data) {

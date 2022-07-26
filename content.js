@@ -32,6 +32,7 @@ const removeListItem = () => {
         } 
       }
     })
+    .catch(err => {});
 }
 
 const targetNode = document.body;
