@@ -1,12 +1,12 @@
 const readLocalStorage = (key) => {
   return new Promise((resolve, reject) => {
-  chrome.storage.local.get([key], function (result) {
-    if (result[key] === undefined) {
-      resolve('fail');
-    } else {
-      resolve(result[key]);
-    }
-      });
+    chrome.storage.local.get([key], function (result) {
+      if (result[key] === undefined) {
+        resolve('fail');
+      } else {
+        resolve(result[key]);
+      }
+    });
   });
 };
 
